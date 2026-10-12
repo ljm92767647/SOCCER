@@ -10,3 +10,7 @@ document.getElementById('status').textContent=mode==='roles'?'POSITION COLLECTIO
 function select(next){mode=next;document.getElementById('default-mode').setAttribute('aria-pressed',String(mode==='roles'));document.getElementById('signature-mode').setAttribute('aria-pressed',String(mode==='signature'));arrange()}
 document.getElementById('default-mode').addEventListener('click',()=>select('roles'));document.getElementById('signature-mode').addEventListener('click',()=>select('signature'));
 document.getElementById('close-player').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});const toggle=document.getElementById('toggle-notes');toggle.addEventListener('click',()=>{const notes=[...document.querySelectorAll('.player-note')],open=notes.some(n=>!n.open);notes.forEach(n=>n.open=open);toggle.textContent=open?'모두 접기':'모두 펼치기'});arrange();
+
+const clubDialog=document.getElementById('club-dialog');
+document.querySelectorAll('.club-button').forEach(button=>button.addEventListener('click',()=>{const crest=button.querySelector('img');document.getElementById('club-name').textContent=crest.alt;const image=crest.cloneNode(true);document.getElementById('club-crest').replaceChildren(image);clubDialog.showModal()}));
+document.getElementById('close-club').addEventListener('click',()=>clubDialog.close());clubDialog.addEventListener('click',event=>{if(event.target===clubDialog)clubDialog.close()});
