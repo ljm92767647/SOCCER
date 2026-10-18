@@ -45,3 +45,13 @@ body,button,input,summary,.note-line,.brand,.row-label,thead th,tbody th{font-fa
  #abilities{padding:35px 4vw;gap:25px;grid-template-columns:minmax(0,1fr);min-width:0}.ability-table,.ability-explanation{min-width:0;width:100%;position:static}.ability-table h2{font-size:clamp(28px,8vw,38px);margin:0 0 16px}.table-scroll{overflow:visible;width:100%}#abilities table{width:100%;min-width:0;table-layout:fixed;border-spacing:3px;font-size:clamp(8px,2.3vw,12px)}#abilities th,#abilities td{padding:9px 3px;line-height:1.6;overflow-wrap:anywhere;word-break:normal;border-radius:4px}#abilities thead th{font-size:clamp(8px,2.1vw,11px);white-space:normal}#abilities tr>:first-child{width:10%}#abilities tbody th{font-size:clamp(14px,4vw,20px)}#abilities td small{font-size:clamp(7px,2vw,10px)}
  .ability-explanation{overflow:visible}.ability-explanation h3{font-size:clamp(10px,2.8vw,13px);overflow-wrap:anywhere;margin-bottom:16px}.ability-explanation .note-line,#notes .note-line,#selected-skills .note-line{white-space:pre-wrap;width:auto;min-width:0;max-width:100%;font-size:clamp(11px,3vw,14px);line-height:1.9;overflow-wrap:anywhere}.ability-explanation .ability-title{font-size:16px;margin-top:20px}.player-copy{min-width:0}#notes{padding:35px 5vw 60px}.archive-title{font-size:32px}
 }
+/* Shared display typography and mobile jersey-only presentation. */
+.brand,.row-label{font-family:var(--display-font);font-weight:400;letter-spacing:-.025em}
+@media(max-width:800px){
+ .single .uniform-group .jersey,.signature.single .uniform-group .jersey,.single .uniform-group:not(.compact) .jersey,.signature.single .uniform-group:not(.compact) .jersey,.single .compact .jersey,.signature.single .compact .jersey{background:transparent;border:0;box-shadow:none;border-radius:0}
+ .single .uniform-group .jersey:hover,.signature.single .uniform-group .jersey:hover{background:transparent;box-shadow:none}
+ .uniform-group .card-name{background:none;border:0;box-shadow:none}
+ .single .compact .uniform-grid,.signature.single .compact .uniform-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 7px}
+ .compact .card-name{font-size:clamp(6.5px,1.9vw,9px);letter-spacing:-.035em;white-space:nowrap;overflow-wrap:normal;left:0;right:0}
+ .single .compact .jersey,.signature.single .compact .jersey{padding:10px 5px 24px}
+}
