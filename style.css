@@ -72,7 +72,7 @@ body,button,input,summary,.note-line,.brand,.row-label,thead th,tbody th{font-fa
 
 /* Glass carousel shared with the exercise guide welcome design. */
 main>[hidden]{display:none!important}body[data-view="home"]{overflow:hidden}body[data-view="home"] header{background:transparent;border:0}body[data-view="home"] header nav{visibility:hidden}body[data-view="home"] .brand{color:#365f7d}body:not([data-view="uniforms"])>.back{display:none}
-#home.entry-screen{position:fixed;inset:0;background:#f1f8fd;overflow:hidden;isolation:isolate}
+#home.entry-screen{position:fixed;inset:0;background:radial-gradient(ellipse at 15% 35%,#e3ecff80,transparent 48%),radial-gradient(ellipse at 85% 70%,#e9e6f780,transparent 48%),#f5f6fa;overflow:hidden;isolation:isolate}
 .entry-header{position:relative;z-index:2;pointer-events:none}.entry-header .brand{pointer-events:auto}
 .entry-carousel{--card-width:min(540px,calc(100vw - 120px));--card-gap:max(56px,calc(50vw - var(--card-width)));--edge-fade:min(24vw,calc((100vw - var(--card-width))/2 - 20px));position:absolute;inset:0;overflow:hidden;touch-action:pan-y;user-select:none;-webkit-user-select:none;outline:none}
 .entry-carousel:focus-visible{outline:none}.entry-carousel:focus-visible .entry-card.is-current{outline:2px solid #458cca;outline-offset:9px}
