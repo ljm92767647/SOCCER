@@ -19,3 +19,17 @@ document.getElementById('close-club').addEventListener('click',()=>clubDialog.cl
 const screens=['home','clubs','uniforms','abilities','notes'];
 function routeCollection(){const hash=decodeURIComponent(location.hash.slice(1));let view=['clubs','uniforms','abilities'].includes(hash)?hash:hash.startsWith('line-')||hash==='notes'?'uniforms':'home';document.body.dataset.view=view;for(const id of screens)document.getElementById(id).hidden=!(id===view||(view==='uniforms'&&id==='notes'));document.querySelectorAll('header nav a').forEach(a=>{if(a.hash==='#'+view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(view==='uniforms')arrange();window.scrollTo({top:0,behavior:'instant'});if(hash.startsWith('line-')){const entry=document.getElementById(hash);if(entry){document.getElementById('notes-archive').open=true;entry.open=true;entry.scrollIntoView({block:'start'})}}}
 window.addEventListener('hashchange',routeCollection);routeCollection();
+
+// Move a soft, neutral reflection across the black glass with the pointer.
+for (const card of document.querySelectorAll('.entry-card')) {
+  card.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch') return;
+    const bounds = card.getBoundingClientRect();
+    card.style.setProperty('--reflect-x', (event.clientX - bounds.left) + 'px');
+    card.style.setProperty('--reflect-y', (event.clientY - bounds.top) + 'px');
+    card.toggleAttribute('data-reflect', true);
+  });
+  const clearReflection = () => card.removeAttribute('data-reflect');
+  card.addEventListener('pointerleave', clearReflection);
+  card.addEventListener('pointercancel', clearReflection);
+}
