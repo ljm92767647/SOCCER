@@ -1,0 +1,52 @@
+@font-face{font-family:'Pinyon Script';src:url('assets/fonts/pinyon-script.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+
+:root{
+ --stage-velvet:linear-gradient(180deg,#080001ad 0%,transparent 30%,transparent 62%,#060001d8 100%),repeating-linear-gradient(90deg,#160505 0%,#390e10 1.2%,#6a2526 2.6%,#4b1417 3.7%,#24070a 5%,#150304 6.2%);
+ --stage-rim:conic-gradient(from 11deg,#58462b 0%,#30271d 13%,#8b7146 27%,#423526 40%,#e0b86f 51%,#675437 61%,#32291d 70%,#bf9b5f 84%,#efcf8f 89%,#58462b 100%);
+ --stage-card-light:radial-gradient(ellipse 110% 86% at 50% -9%,#514432 0%,#30291f 28%,#1b1813 57%,#0c0b0a 100%);
+}
+
+/* A quiet, centered pool of warm light; no continuously drawn particles. */
+html{background:#050505}
+body{background:#050505}
+body::before{inset:0;background:radial-gradient(ellipse 50% 41% at 50% 35%,#63482047 0%,#36291635 41%,transparent 100%),radial-gradient(ellipse 42% 10% at 50% 83%,#a1773530 0%,transparent 100%),#050505}
+body[data-view="home"]::after{content:none;animation:none;will-change:auto}
+
+#home.entry-screen{gap:clamp(19px,3.3svh,30px);padding-top:clamp(12px,3.2svh,28px)}
+#home-title{font-family:'Pinyon Script','Snell Roundhand','Times New Roman',serif;font-size:clamp(62px,8.6vw,119px);letter-spacing:0;line-height:1.04;color:#f3d28e;text-shadow:0 1px 2px #755526,0 3px 28px #e7b4543a}
+#home-title .home-sport{font-family:var(--display-font);font-size:clamp(12px,1.4vw,18px);letter-spacing:.55em;line-height:1.25;text-indent:.55em;margin:11px auto 0;text-shadow:none}
+#home-title .home-sport::before{content:'';display:block;width:min(430px,72vw);height:1px;margin:0 auto 12px;background:linear-gradient(90deg,transparent,#b08b4d8f 20%,#e2bd7a 50%,#b08b4d8f 80%,transparent)}
+.entry-grid{width:min(830px,100%);gap:clamp(11px,1.75svh,17px)}
+.entry-card{min-height:clamp(87px,14.8svh,128px);border-radius:5px}
+.entry-card-title{letter-spacing:.045em;font-size:clamp(23px,2.85vw,37px);color:#f2d292}
+.entry-glass{border:1px solid transparent;background:radial-gradient(ellipse 88% 124% at 50% -56%,#5e4a31bc,transparent 75%) padding-box,linear-gradient(157deg,#201b15dd,#0b0a08f0) padding-box,var(--stage-rim) border-box;box-shadow:0 10px 30px #0008,inset 0 0 24px #0007}
+.entry-glass::before{inset:2px;border:1px solid #e3c39017}
+.entry-glass::after{background:radial-gradient(ellipse 230px 116px at var(--reflect-x,50%) var(--reflect-y,50%),#ffdb8852,#f8bb5122 43%,transparent 100%)}
+.entry-glint{opacity:.35}
+.entry-card:is(:hover,:focus-visible) .entry-glass{border-color:transparent;box-shadow:0 11px 36px #0009,inset 0 0 20px #f2c86b19}
+
+body:not([data-view="home"]) header{background:var(--stage-velvet);border-bottom:1px solid #b99152;box-shadow:0 1px 0 #f4d1934d,0 7px 22px #000b;backdrop-filter:none}
+body:not([data-view="home"]) header .brand,body:not([data-view="home"]) header nav a{color:#f6d694;text-shadow:0 1px 4px #050001}
+
+#board .jersey,#board.single .uniform-group .jersey,#board.single.signature .uniform-group .jersey{border:1px solid transparent!important;border-radius:5px!important;background:var(--stage-card-light) padding-box,var(--stage-rim) border-box!important;box-shadow:inset 0 0 0 2px #09080645,0 8px 16px #0005!important;backdrop-filter:none;-webkit-backdrop-filter:none}
+#board .jersey:hover{border-color:transparent!important;box-shadow:inset 0 0 0 1px #e6b86555,0 9px 20px #0007!important}
+
+/* The same overhead light for every jersey detail. */
+.player-visual{border:1px solid transparent;border-radius:5px;background:var(--stage-card-light) padding-box,var(--stage-rim) border-box;box-shadow:none}
+.player-visual::before{inset:0;opacity:1;transform:none;filter:none;clip-path:polygon(42% 0,58% 0,96% 100%,4% 100%);background:linear-gradient(180deg,#ffe0a32e,#ffe1a515 45%,transparent 93%)}
+.player-visual::after{inset:0;opacity:1;background:radial-gradient(ellipse 49% 9% at 50% 81%,#d6a75b2f,transparent 100%)}
+.player-visual>img{filter:drop-shadow(0 15px 15px #0009) drop-shadow(0 0 12px #ffe0a324)}
+
+.stage-curtain[hidden]{display:none}
+.stage-curtain{position:fixed;inset:0;z-index:90;overflow:hidden;display:flex;pointer-events:auto}
+.stage-curtain__half{width:50%;height:100%;background:var(--stage-velvet);border-bottom:1px solid #b99152;box-shadow:inset 0 16px 35px #120102a8,0 12px 30px #0009;transform:translateY(-105%);will-change:transform}
+.stage-curtain__half:first-child{border-right:1px solid #070001;transform-origin:left top}
+.stage-curtain__half:last-child{transform-origin:right top}
+
+@media(max-width:680px){
+ #home.entry-screen{gap:20px;padding-top:clamp(16px,4.1svh,30px)}
+ #home-title{font-size:clamp(54px,13.9vw,84px)}
+ #home-title .home-sport::before{margin-bottom:10px}
+ .entry-card{min-height:clamp(88px,15svh,119px);border-radius:5px}
+ .entry-card-title{font-size:clamp(24px,7vw,32px)}
+}
