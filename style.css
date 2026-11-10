@@ -81,7 +81,7 @@ body:not([data-view="uniforms"])>.back{display:none}
 .entry-card{display:grid;place-items:center;min-width:0;min-height:clamp(102px,16.5svh,142px);padding:14px 18px;border-radius:24px;position:relative;isolation:isolate;overflow:hidden;transition:transform .22s ease;cursor:pointer;user-select:none;-webkit-user-select:none}
 .entry-card-title{font-family:var(--display-font);font-size:clamp(26px,3.15vw,42px);font-weight:400;line-height:1.15;letter-spacing:-.035em;color:var(--gold);text-shadow:0 2px 14px #000a}
 .entry-card-title small{display:block;margin-top:7px;font:inherit;font-size:.65em}
-.entry-glass{position:absolute;z-index:-1;inset:0;border-radius:inherit;border:1px solid #e9bb639c;overflow:hidden;background:linear-gradient(143deg,#ffffff0a 0%,transparent 44%,#ffffff03 92%),#08080855;backdrop-filter:blur(.55px);-webkit-backdrop-filter:blur(.55px);box-shadow:inset 0 1px 1px #ffffff24,inset 0 -1px 1px #ffffff0f,0 18px 40px #0007;transition:border-color .22s ease}
+.entry-glass{position:absolute;z-index:-1;inset:0;border-radius:inherit;border:1px solid #e9bb639c;overflow:hidden;background:linear-gradient(143deg,#ffffff0a 0%,transparent 44%,#ffffff03 92%),#08080855;box-shadow:inset 0 1px 1px #ffffff24,inset 0 -1px 1px #ffffff0f,0 18px 40px #0007;transition:border-color .22s ease}
 .entry-glass::before{content:'';position:absolute;inset:2px;border-radius:inherit;border:1px solid #efc57026}
 .entry-glass::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 220px 115px at var(--reflect-x,50%) var(--reflect-y,50%),#ffffff29, #ffffff12 42%,transparent 100%);opacity:0;transition:opacity .2s ease}
 .entry-card[data-reflect] .entry-glass::after{opacity:1}
@@ -113,9 +113,12 @@ header .brand{display:inline-flex;align-items:baseline;gap:10px;white-space:nowr
 :root{color-scheme:dark;--gold:#efca78;--ink:#fff;--muted:#fff;--accent:var(--gold);--line:#e3b6633d;--dark-glass:linear-gradient(145deg,#191919e8,#101010f0 65%,#141414e8)}
 html{background:#080808}
 body{min-height:100svh;isolation:isolate;background:#080808;background-attachment:fixed;color:var(--ink)}
-body::before{content:'';position:fixed;inset:-3%;z-index:-1;pointer-events:none;background:url('assets/gold-microdust.svg') center/cover no-repeat;animation:gold-drift 19s ease-in-out infinite alternate}
-@keyframes gold-drift{from{transform:translate3d(-.6%,.8%,0);opacity:.84}to{transform:translate3d(1%,-1.1%,0);opacity:1}}
-@media(prefers-reduced-motion:reduce){body::before{animation:none}}
+/* Static gold field with a single compositor-animated layer on the home screen. */
+body::before,body[data-view="home"]::after{content:'';position:fixed;inset:-3%;z-index:-1;pointer-events:none;background-position:center;background-size:cover;background-repeat:no-repeat}
+body::before{background-image:url('assets/gold-dust-still.svg')}
+body[data-view="home"]::after{background-image:url('assets/gold-dust-drift.svg');animation:gold-drift 21s ease-in-out infinite alternate;will-change:transform}
+@keyframes gold-drift{from{transform:translate3d(-1.25%,1.1%,0);opacity:.83}to{transform:translate3d(1.45%,-1.45%,0);opacity:1}}
+@media(prefers-reduced-motion:reduce){body[data-view="home"]::after{animation:none;will-change:auto}}
 header{background:#0b0a09e8;border-color:var(--line)}
 body[data-view="home"] header{background:transparent;backdrop-filter:none}
 body[data-view="home"] .brand,header .brand,header nav a,#home-title,.entry-card-title,.club-label h2,.row-label,.archive-title,.archive-title>span,.player-information h3,.ability-explanation h3,.ability-title,#abilities th,#club-name{color:var(--gold)}
@@ -149,5 +152,3 @@ footer{background:#0c0b09;color:var(--gold)}footer span{color:var(--ink)}
 @media(min-width:601px){.player-visual>img{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);height:60%;max-height:calc(100% - 112px);width:auto;max-width:86%}.player-visual>div{position:absolute;left:28px;right:28px;bottom:24px}}
 @media(max-width:600px){.player-visual{grid-template-rows:minmax(0,1fr);align-items:center}.player-visual>img{grid-row:1;align-self:center;justify-self:center}.player-visual>div{grid-row:1;grid-column:1;align-self:center}}
 
-.gold-particles{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
-body.has-gold-particles::before{display:none}
