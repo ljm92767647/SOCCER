@@ -38,8 +38,9 @@ body:not([data-view="home"]) header .brand,body:not([data-view="home"]) header n
 
 /* The same overhead light for every jersey detail. */
 .player-visual{--beam-x:50%;border:1px solid transparent;border-radius:5px;background:var(--portrait-light) padding-box,var(--stage-rim) border-box;box-shadow:none}
-.player-visual::before{inset:0;opacity:1;transform:none;filter:none;clip-path:polygon(37% 0,63% 0,99% 100%,1% 100%);background:linear-gradient(180deg,#dfd4ba36,#daceb52b 22%,#daceb511 58%,transparent 94%)}
+.player-visual::before{inset:0;z-index:1;opacity:1;transform:none;filter:none;clip-path:polygon(37% 0,63% 0,99% 100%,1% 100%);background:linear-gradient(180deg,#dfd4ba36,#daceb52b 22%,#daceb511 58%,transparent 94%)}
 .player-visual::after{inset:0;opacity:1;background:radial-gradient(ellipse 45% 8% at var(--beam-x) 83%,#d1bd902d,transparent 100%)}
+.player-visual>div{z-index:2}
 .player-visual>img{filter:drop-shadow(0 15px 15px #0009) drop-shadow(0 0 9px #e5d5ae20)}
 @media(max-width:600px){
  /* The mobile jersey is centered in the 100px right column after 20px padding. */
@@ -63,3 +64,6 @@ body[data-view="home"].stage-clearing header,body[data-view="home"].stage-cleari
  .entry-card{min-height:clamp(88px,15svh,119px);border-radius:5px}
  .entry-card-title{font-size:clamp(24px,7vw,32px)}
 }
+
+/* Keep the supplied Juventus mark and flatten the checkerboard in its source. */
+:is(.club-button,#club-crest) img[src$="/juventus-crest.png"]{clip-path:inset(12.75% 19.77%);filter:contrast(1.3)}
