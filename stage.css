@@ -65,5 +65,5 @@ body[data-view="home"].stage-clearing header,body[data-view="home"].stage-cleari
  .entry-card-title{font-size:clamp(24px,7vw,32px)}
 }
 
-/* Keep the supplied Juventus mark and flatten the checkerboard in its source. */
-:is(.club-button,#club-crest) img[src$="/juventus-crest.png"]{clip-path:inset(12.75% 19.77%);filter:contrast(1.3)}
+/* Crop the original canvas; the inline SVG filter keeps only the white mark. */
+:is(.club-button,#club-crest) img[src$="/juventus-crest.png"]{clip-path:inset(12.75% 19.77%)}
