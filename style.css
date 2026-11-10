@@ -102,3 +102,52 @@ main>[hidden]{display:none!important}body[data-view="home"]{overflow:hidden}body
 .entry-window{overflow:clip}
 /* Matching sport labels on both archives. */
 header .brand{display:inline-flex;align-items:baseline;gap:10px;white-space:nowrap}header .brand .brand-sport{display:inline-block;width:auto;font-family:var(--display-font);font-size:18px;font-weight:400;letter-spacing:.04em;line-height:1.2}#home-title .home-sport{display:block;margin-top:7px;font-family:inherit;font-size:28px;font-weight:400;letter-spacing:.12em;line-height:1.2}@media(max-width:800px){header .brand{gap:7px}header .brand .brand-sport{font-size:14px}#home-title .home-sport{font-size:23px}}@media(max-width:450px){header nav{gap:9px;font-size:8px;letter-spacing:.4px}}@media(max-height:500px){#home-title .home-sport{font-size:18px;margin-top:3px}}
+
+/* Hall of Fame: black, gold display text and white reading text. */
+:root{color-scheme:dark;--gold:#efca78;--ink:#fff;--muted:#fff;--accent:var(--gold);--line:#e3b6633d;--dark-glass:linear-gradient(145deg,#242019e8,#100f0ef0 65%,#201911e8)}
+html{background:#080808}
+body{min-height:100svh;isolation:isolate;background:radial-gradient(ellipse at 100% 0%,#39260d65,transparent 47%),radial-gradient(ellipse at 0% 100%,#32200c55,transparent 48%),#080808;background-attachment:fixed;color:var(--ink)}
+body::before{content:'';position:fixed;inset:-3%;z-index:-1;pointer-events:none;background:url('assets/gold-dust.svg') center/cover no-repeat;animation:gold-drift 19s ease-in-out infinite alternate}
+@keyframes gold-drift{from{transform:translate3d(-.6%,.8%,0);opacity:.84}to{transform:translate3d(1%,-1.1%,0);opacity:1}}
+@media(prefers-reduced-motion:reduce){body::before{animation:none}}
+header{background:#0b0a09e8;border-color:var(--line)}
+body[data-view="home"] header{background:transparent;backdrop-filter:none}
+body[data-view="home"] .brand,header .brand,header nav a,#home-title,.entry-card-title,.club-label h2,.row-label,.archive-title,.archive-title>span,.player-information h3,.ability-explanation h3,.ability-title,#abilities th,#club-name{color:var(--gold)}
+header nav a:hover,header nav a[aria-current]{color:#ffe3a2}
+.club-page,#uniforms,#abilities,#notes,#home.entry-screen{background:transparent;color:var(--ink)}
+.club-label p,.note-line,#selected-name,.player-note summary,.player-note[open] summary,.card-name,#board.single .uniform-group .card-name,#abilities td,#abilities td small{color:var(--ink)}
+.club-button img,.emblem img[src$='/6.webp']{mix-blend-mode:normal;filter:drop-shadow(0 0 8px #eaca7c33)}
+.club-button:hover img{filter:drop-shadow(0 0 10px #eaca7c66)}
+.collection-toolbar,.player-note,#selected-skills{border-color:var(--line)}
+.modes button,.view-modes button{background:#15120eea;color:var(--gold);border-color:var(--line)}
+.modes button[aria-pressed=true],.view-modes button[aria-pressed=true]{background:#362611;color:#ffe3a2;border-color:#c79b4d}
+#board .jersey,#board.single .uniform-group .jersey,#board.single.signature .uniform-group .jersey{background:var(--dark-glass)!important;border:1px solid var(--line)!important;box-shadow:inset 0 1px 0 #ffe4a61a,0 8px 22px #0006!important}
+#board .jersey:hover{border-color:#e3b6638c!important}
+#abilities td,#abilities tbody th{background:#17130ef2;border:1px solid var(--line)}
+.player-note:target{background:#17130ebf;box-shadow:-16px 0 0 #17130ebf,16px 0 0 #17130ebf}
+.summary-action,#toggle-notes,.back,#close-player,#close-club{color:var(--gold)}
+#toggle-notes,.back,#close-player,#close-club{background:#201912;border:1px solid var(--line)}
+#player-dialog,#club-dialog{background:radial-gradient(ellipse at 0% 0%,#30210e,transparent 58%),#11100e;color:var(--ink);border:1px solid var(--line);box-shadow:0 30px 90px #000b}
+#player-dialog::backdrop,#club-dialog::backdrop{background:#000b}
+.player-visual{background:radial-gradient(ellipse at 15% 75%,color-mix(in srgb,var(--kit-color,#576c90) 60%,transparent),transparent 65%),radial-gradient(ellipse at 85% 10%,#b0813c70,transparent 58%),#11100f;box-shadow:inset 0 0 0 1px var(--line)}
+.player-visual::before{opacity:.35}.player-visual::after{opacity:.25}
+#selected-name{text-shadow:0 2px 10px #000}
+footer{background:#0c0b09;color:var(--gold)}footer span{color:var(--ink)}
+.scroll-control input,.scroll-control input::-webkit-slider-runnable-track{background:#735b34}
+.scroll-control input::-webkit-slider-thumb{background:var(--gold);border-color:#14110b}
+.scroll-control input::-moz-range-track{background:#735b34}.scroll-control input::-moz-range-thumb{background:var(--gold)}
+:where(a,button,summary,input):focus-visible,.club-button:focus-visible,.entry-carousel:focus-visible .entry-card.is-current,.entry-card:focus-visible,.scroll-control input:focus-visible{outline-color:var(--gold)}
+
+/* Keep the exercise guide's centered glass carousel and fading side cards. */
+#home-title{text-shadow:0 2px 28px #db9a4f40}
+.entry-card-title{text-shadow:0 2px 24px #e2b45e35}
+.entry-card::after{background:#c08b3d42}
+.entry-glass{border-color:#dfb76e88;background:radial-gradient(ellipse at var(--light-x,28%) var(--light-y,12%),#b7874338 0%,transparent 67%),linear-gradient(137deg,#292016ef 0%,#100e0ce0 51%,#21180ee8 100%);box-shadow:inset 0 1px 2px #ffdd9a80,inset -2px -2px 4px #b17a3840,0 29px 50px -22px #e4ab4933,0 12px 22px -14px #000}
+.entry-glass::before{border-color:#f0c98236;box-shadow:inset 0 0 24px #e6a34a0c}
+.entry-glint{background:linear-gradient(90deg,transparent,#fff0c422 49%,#fff0c407 55%,transparent 88%)}
+.entry-rim{background:linear-gradient(135deg,#ffdea98c,transparent 32%,#f8d49612 55%,#b3884e66 79%,#fce1a085)}
+.entry-caustic{background:#e0a75150}
+.entry-arrow{color:var(--gold)}.entry-arrow:hover:not(:disabled){color:#ffe6b0;background:#eac26e19}
+@media(min-width:701px) and (min-height:501px){.entry-card{height:min(360px,50svh)}#home-title{top:clamp(65px,13svh,95px)}}
+@media(max-width:700px){.entry-rim{background:none;border-color:#f3ce8c40;box-shadow:inset 1px 1px 2px #f9db9e35,inset -1px -1px 2px #bc87402b}}
+@media(max-height:550px) and (min-height:501px){#home-title{top:64px;font-size:34px}#home-title .home-sport{font-size:19px}}
