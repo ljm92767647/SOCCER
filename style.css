@@ -75,12 +75,12 @@ main>[hidden]{display:none!important}
 body[data-view="home"] header{background:transparent;border:0}
 body[data-view="home"] header nav{visibility:hidden}
 body:not([data-view="uniforms"])>.back{display:none}
-#home.entry-screen{min-height:calc(100svh - 68px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(24px,5.4vh,54px);padding:24px 5vw 52px;text-align:center}
+#home.entry-screen{min-height:calc(100svh - 68px);display:flex;flex-direction:column;justify-content:flex-start;align-items:center;gap:clamp(20px,4.1svh,36px);padding:clamp(16px,4svh,36px) 5vw 32px;text-align:center}
 #home-title{margin:0;font-family:var(--display-font);font-weight:400;font-size:clamp(36px,4.3vw,60px);letter-spacing:-.04em;line-height:1.13;color:var(--gold);text-shadow:0 2px 24px #db9a4f2b}
-.entry-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.1vw,30px);width:min(1160px,100%)}
-.entry-card{display:grid;place-items:center;min-width:0;min-height:clamp(180px,39svh,325px);padding:20px 12px;border-radius:29px;position:relative;isolation:isolate;overflow:hidden;transition:transform .22s ease;cursor:pointer}
-.entry-card-title{font-family:var(--display-font);font-size:clamp(23px,3.35vw,46px);font-weight:400;line-height:1.15;letter-spacing:-.035em;color:var(--gold);text-shadow:0 2px 14px #000a}
-.entry-card-title small{display:block;margin-top:12px;font:inherit;font-size:.65em}
+.entry-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(12px,2svh,18px);width:min(860px,100%)}
+.entry-card{display:grid;place-items:center;min-width:0;min-height:clamp(102px,16.5svh,142px);padding:14px 18px;border-radius:24px;position:relative;isolation:isolate;overflow:hidden;transition:transform .22s ease;cursor:pointer}
+.entry-card-title{font-family:var(--display-font);font-size:clamp(26px,3.15vw,42px);font-weight:400;line-height:1.15;letter-spacing:-.035em;color:var(--gold);text-shadow:0 2px 14px #000a}
+.entry-card-title small{display:block;margin-top:7px;font:inherit;font-size:.65em}
 .entry-glass{position:absolute;z-index:-1;inset:0;border-radius:inherit;border:1px solid #ffffff36;overflow:hidden;background:linear-gradient(143deg,#ffffff0c 0%,transparent 44%,#ffffff04 92%),#0c0c0ceb;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:inset 0 1px 1px #ffffff24,inset 0 -1px 1px #ffffff0f,0 18px 40px #0007;transition:border-color .22s ease}
 .entry-glass::before{content:'';position:absolute;inset:2px;border-radius:inherit;border:1px solid #ffffff0a}
 .entry-glint{position:absolute;top:-34%;left:8%;height:176%;width:36%;transform:rotate(32deg);background:linear-gradient(90deg,transparent,#ffffff0d 48%,#ffffff03 57%,transparent 88%);filter:blur(8px)}
@@ -92,8 +92,8 @@ body:not([data-view="uniforms"])>.back{display:none}
 @media(max-width:680px){
  #home.entry-screen{min-height:calc(100svh - 60px);gap:clamp(18px,3.2svh,30px);padding:18px 6vw 28px}
  #home-title{font-size:clamp(30px,8.5vw,46px)}
- .entry-grid{grid-template-columns:1fr;width:min(100%,390px);gap:12px}
- .entry-card{min-height:clamp(78px,15.8svh,136px);border-radius:21px;padding:13px 10px}
+ .entry-grid{grid-template-columns:1fr;width:min(100%,460px);gap:12px}
+ .entry-card{min-height:clamp(94px,15.8svh,130px);border-radius:21px;padding:13px 10px}
  .entry-card-title{font-size:clamp(24px,7.2vw,34px)}.entry-card-title small{margin-top:5px}
 }
 body[data-view="clubs"] .club-page{min-height:calc(100svh - 68px);padding-top:18px}
@@ -110,7 +110,7 @@ header .brand{display:inline-flex;align-items:baseline;gap:10px;white-space:nowr
 :root{color-scheme:dark;--gold:#efca78;--ink:#fff;--muted:#fff;--accent:var(--gold);--line:#e3b6633d;--dark-glass:linear-gradient(145deg,#191919e8,#101010f0 65%,#141414e8)}
 html{background:#080808}
 body{min-height:100svh;isolation:isolate;background:#080808;background-attachment:fixed;color:var(--ink)}
-body::before{content:'';position:fixed;inset:-3%;z-index:-1;pointer-events:none;background:url('assets/gold-confetti.svg') center/cover no-repeat;animation:gold-drift 19s ease-in-out infinite alternate}
+body::before{content:'';position:fixed;inset:-3%;z-index:-1;pointer-events:none;background:url('assets/gold-foil-shine.svg') center/cover no-repeat;animation:gold-drift 19s ease-in-out infinite alternate}
 @keyframes gold-drift{from{transform:translate3d(-.6%,.8%,0);opacity:.84}to{transform:translate3d(1%,-1.1%,0);opacity:1}}
 @media(prefers-reduced-motion:reduce){body::before{animation:none}}
 header{background:#0b0a09e8;border-color:var(--line)}
