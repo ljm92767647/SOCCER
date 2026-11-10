@@ -57,7 +57,7 @@ body[data-view="home"].stage-clearing header,body[data-view="home"].stage-cleari
 .stage-curtain__half:last-child{transform-origin:right top}
 
 @media(max-width:680px){
- .stage-curtain__half{background:linear-gradient(180deg,#19040558,transparent 34%,transparent 75%,#19040591),repeating-linear-gradient(90deg,#090102 0%,#130305 1.25%,#3e1115 3%,#6c2729 8%,#70272a 12%,#54191c 17%,#24080c 19.25%,#090102 21%);box-shadow:inset 0 12px 22px #25070855,0 9px 22px #0006}
+ .stage-curtain__half{background:linear-gradient(180deg,#19040558,transparent 34%,transparent 75%,#19040591),repeating-linear-gradient(90deg,#090102 0%,#130305 1.2%,#3e1115 2.86%,#6c2729 7.62%,#70272a 11.43%,#54191c 16.19%,#24080c 18.33%,#090102 20%);box-shadow:inset 0 12px 22px #25070855,0 9px 22px #0006}
  #home.entry-screen{gap:20px;padding-top:clamp(16px,4.1svh,30px)}
  #home-title{font-size:clamp(54px,13.9vw,84px)}
  #home-title .home-sport::before{margin-bottom:10px}
