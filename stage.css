@@ -4,6 +4,9 @@
  --stage-velvet:linear-gradient(180deg,#080001ad 0%,transparent 30%,transparent 62%,#060001d8 100%),repeating-linear-gradient(90deg,#160505 0%,#390e10 1.2%,#6a2526 2.6%,#4b1417 3.7%,#24070a 5%,#150304 6.2%);
  --stage-rim:conic-gradient(from 11deg,#58462b 0%,#30271d 13%,#8b7146 27%,#423526 40%,#e0b86f 51%,#675437 61%,#32291d 70%,#bf9b5f 84%,#efcf8f 89%,#58462b 100%);
  --stage-card-light:radial-gradient(ellipse 110% 86% at 50% -9%,#514432 0%,#30291f 28%,#1b1813 57%,#0c0b0a 100%);
+ --portrait-light:linear-gradient(180deg,#302d25 0%,#26241d 25%,#171610 58%,#0b0b09 88%);
+ --portrait-rim:conic-gradient(from -47deg,#79613d 0%,#e7c483 12%,#ab8752 23%,#594729 33%,#806442 48%,#d7b87c 62%,#ae8c56 73%,#493c27 85%,#79613d 100%);
+ --portrait-inner:conic-gradient(from -45deg,#786447 0%,#c7a979 14%,#6a573a 30%,#4e422e 46%,#b49a6e 64%,#9b8158 73%,#514430 90%,#786447 100%);
 }
 
 /* A quiet, centered pool of warm light; no continuously drawn particles. */
@@ -20,22 +23,29 @@ body[data-view="home"]::after{content:none;animation:none;will-change:auto}
 .entry-card{min-height:clamp(87px,14.8svh,128px);border-radius:5px}
 .entry-card-title{letter-spacing:.045em;font-size:clamp(23px,2.85vw,37px);color:#f2d292}
 .entry-glass{border:1px solid transparent;background:radial-gradient(ellipse 88% 124% at 50% -56%,#5e4a31bc,transparent 75%) padding-box,linear-gradient(157deg,#201b15dd,#0b0a08f0) padding-box,var(--stage-rim) border-box;box-shadow:0 10px 30px #0008,inset 0 0 24px #0007}
-.entry-glass::before{inset:2px;border:1px solid #e3c39017}
+.entry-glass::before{inset:3px;border:1px solid #e3c39058}
 .entry-glass::after{background:radial-gradient(ellipse 230px 116px at var(--reflect-x,50%) var(--reflect-y,50%),#ffdb8852,#f8bb5122 43%,transparent 100%)}
 .entry-glint{opacity:.35}
 .entry-card:is(:hover,:focus-visible) .entry-glass{border-color:transparent;box-shadow:0 11px 36px #0009,inset 0 0 20px #f2c86b19}
 
-body:not([data-view="home"]) header{background:var(--stage-velvet);border-bottom:1px solid #b99152;box-shadow:0 1px 0 #f4d1934d,0 7px 22px #000b;backdrop-filter:none}
+body:not([data-view="home"]) header{background:linear-gradient(180deg,#0e0b0a 0%,#1c0d0e 50%,#351416 100%);border-bottom:1px solid #987245;box-shadow:0 1px 0 #bc956741,0 7px 22px #0009;backdrop-filter:none}
 body:not([data-view="home"]) header .brand,body:not([data-view="home"]) header nav a{color:#f6d694;text-shadow:0 1px 4px #050001}
 
-#board .jersey,#board.single .uniform-group .jersey,#board.single.signature .uniform-group .jersey{border:1px solid transparent!important;border-radius:5px!important;background:var(--stage-card-light) padding-box,var(--stage-rim) border-box!important;box-shadow:inset 0 0 0 2px #09080645,0 8px 16px #0005!important;backdrop-filter:none;-webkit-backdrop-filter:none}
-#board .jersey:hover{border-color:transparent!important;box-shadow:inset 0 0 0 1px #e6b86555,0 9px 20px #0007!important}
+#board .jersey,#board.single .uniform-group .jersey,#board.single.signature .uniform-group .jersey{border:1px solid transparent!important;border-radius:0!important;background:radial-gradient(ellipse 90% 65% at 50% 0%,#c7b28c19,transparent 92%) padding-box,var(--portrait-light) padding-box,var(--portrait-rim) border-box!important;box-shadow:0 8px 16px #0005!important;backdrop-filter:none;-webkit-backdrop-filter:none}
+#board .jersey::before,#board.single .uniform-group .jersey::before{content:''!important;display:block!important;position:absolute;inset:3px;padding:1px;background:var(--portrait-inner);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;pointer-events:none;z-index:1}
+#board .jersey:hover{border-color:transparent!important;box-shadow:0 9px 20px #0007!important}
 
 /* The same overhead light for every jersey detail. */
-.player-visual{border:1px solid transparent;border-radius:5px;background:var(--stage-card-light) padding-box,var(--stage-rim) border-box;box-shadow:none}
-.player-visual::before{inset:0;opacity:1;transform:none;filter:none;clip-path:polygon(42% 0,58% 0,96% 100%,4% 100%);background:linear-gradient(180deg,#ffe0a32e,#ffe1a515 45%,transparent 93%)}
-.player-visual::after{inset:0;opacity:1;background:radial-gradient(ellipse 49% 9% at 50% 81%,#d6a75b2f,transparent 100%)}
-.player-visual>img{filter:drop-shadow(0 15px 15px #0009) drop-shadow(0 0 12px #ffe0a324)}
+.player-visual{--beam-x:50%;border:1px solid transparent;border-radius:5px;background:var(--portrait-light) padding-box,var(--stage-rim) border-box;box-shadow:none}
+.player-visual::before{inset:0;opacity:1;transform:none;filter:none;clip-path:polygon(37% 0,63% 0,81% 22%,99% 100%,1% 100%,19% 22%);background:linear-gradient(180deg,#dfd4ba36,#daceb52b 22%,#daceb511 58%,transparent 94%)}
+.player-visual::after{inset:0;opacity:1;background:radial-gradient(ellipse 45% 8% at var(--beam-x) 83%,#d1bd902d,transparent 100%)}
+.player-visual>img{filter:drop-shadow(0 15px 15px #0009) drop-shadow(0 0 9px #e5d5ae20)}
+@media(max-width:600px){
+ /* The mobile jersey is centered in the 100px right column after 20px padding. */
+ .player-visual{--beam-x:calc(100% - 70px)}
+ .player-visual::before{clip-path:polygon(calc(var(--beam-x) - 20px) 0,calc(var(--beam-x) + 20px) 0,calc(var(--beam-x) + 53px) 15%,calc(var(--beam-x) + 86px) 100%,calc(var(--beam-x) - 86px) 100%,calc(var(--beam-x) - 53px) 15%)}
+ .player-visual::after{background:radial-gradient(ellipse 68px 15px at var(--beam-x) 89%,#d1bd902b,transparent 100%)}
+}
 
 .stage-curtain[hidden]{display:none}
 .stage-curtain{position:fixed;inset:0;z-index:90;overflow:hidden;display:flex;pointer-events:auto}
