@@ -20,7 +20,7 @@ const screens=['home','clubs','uniforms','abilities','notes'];
 function routeCollection(){const hash=decodeURIComponent(location.hash.slice(1));let view=['clubs','uniforms','abilities'].includes(hash)?hash:hash.startsWith('line-')||hash==='notes'?'uniforms':'home';document.body.dataset.view=view;for(const id of screens)document.getElementById(id).hidden=!(id===view||(view==='uniforms'&&id==='notes'));document.querySelectorAll('header nav a').forEach(a=>{if(a.hash==='#'+view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(view==='uniforms')arrange();window.scrollTo({top:0,behavior:'instant'});if(hash.startsWith('line-')){const entry=document.getElementById(hash);if(entry){document.getElementById('notes-archive').open=true;entry.open=true;entry.scrollIntoView({block:'start'})}}}
 window.addEventListener('hashchange',routeCollection);routeCollection();
 
-// Fade in the closed curtain, swap sections, then draw it slowly to the sides.
+// Clear the home content, fade in the curtain, then hold before opening it.
 const curtain = document.querySelector('.stage-curtain');
 const curtainHalves = [...(curtain?.children || [])];
 const reducedStageMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -31,7 +31,7 @@ document.querySelector('.entry-grid')?.addEventListener('click', async event => 
   event.preventDefault();
   if (curtainBusy) return;
   curtainBusy = true;
-  curtain.hidden = false;
+  document.body.classList.add('stage-clearing');
   const previousHash = location.hash;
   const effects = [];
   function animatePanels(frames, options) {
@@ -45,7 +45,12 @@ document.querySelector('.entry-grid')?.addEventListener('click', async event => 
     routeCollection();
   }
   try {
+    await new Promise(resolve => setTimeout(resolve, 140));
+    if (location.hash !== previousHash) return;
+    curtain.hidden = false;
     await animatePanels(() => [{ opacity:0 }, { opacity:1 }], { duration:820, easing:'ease-in-out' });
+    await new Promise(resolve => setTimeout(resolve, 360));
+    if (location.hash !== previousHash) return;
     openCollection();
     await animatePanels(i => [{ transform:'translateX(0)' }, { transform:`translateX(${i === 0 ? -104 : 104}%) scaleX(.9)` }], { duration:1620, easing:'cubic-bezier(.52,.07,.34,1)' });
   } catch {
@@ -53,6 +58,7 @@ document.querySelector('.entry-grid')?.addEventListener('click', async event => 
   } finally {
     curtain.hidden = true;
     effects.forEach(effect => effect.cancel());
+    document.body.classList.remove('stage-clearing');
     curtainBusy = false;
   }
 });
