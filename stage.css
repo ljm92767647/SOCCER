@@ -5,14 +5,14 @@
  --stage-rim:conic-gradient(from 11deg,#58462b 0%,#30271d 13%,#8b7146 27%,#423526 40%,#e0b86f 51%,#675437 61%,#32291d 70%,#bf9b5f 84%,#efcf8f 89%,#58462b 100%);
  --stage-card-light:radial-gradient(ellipse 110% 86% at 50% -9%,#514432 0%,#30291f 28%,#1b1813 57%,#0c0b0a 100%);
  --portrait-light:linear-gradient(180deg,#302d25 0%,#26241d 25%,#171610 58%,#0b0b09 88%);
- --portrait-rim:conic-gradient(from -47deg,#79613d 0%,#e7c483 12%,#ab8752 23%,#594729 33%,#806442 48%,#d7b87c 62%,#ae8c56 73%,#493c27 85%,#79613d 100%);
- --portrait-inner:conic-gradient(from -45deg,#786447 0%,#c7a979 14%,#6a573a 30%,#4e422e 46%,#b49a6e 64%,#9b8158 73%,#514430 90%,#786447 100%);
+ --portrait-rim:radial-gradient(ellipse 48px 58px at 0 0,#f5d797 0%,#ba9354 25%,transparent 100%) border-box,radial-gradient(ellipse 53px 50px at 100% 100%,#f9d88c 0%,#bc9250 21%,transparent 100%) border-box,radial-gradient(ellipse 31px 8px at 64% 0,#d5af6b,transparent 100%) border-box,linear-gradient(#4a3923,#34291c) border-box;
+ --portrait-inner:radial-gradient(ellipse 36px 42px at 0 0,#bfa272,transparent 100%),radial-gradient(ellipse 41px 37px at 100% 100%,#caaa75,transparent 100%),radial-gradient(ellipse 24px 7px at 64% 0,#ad8f5e,transparent 100%),#33291c;
 }
 
 /* A quiet, centered pool of warm light; no continuously drawn particles. */
 html{background:#050505}
 body{background:#050505}
-body::before{inset:0;background:radial-gradient(ellipse 50% 41% at 50% 35%,#63482047 0%,#36291635 41%,transparent 100%),radial-gradient(ellipse 42% 10% at 50% 83%,#a1773530 0%,transparent 100%),#050505}
+body::before{inset:0;background:radial-gradient(ellipse 49% 12% at 50% 78%,#aa845036 0%,#7359321b 54%,transparent 100%),radial-gradient(ellipse 62% 58% at 50% 43%,#77613a4f 0%,#52432c3d 39%,#251f1730 68%,transparent 100%),#0a0908}
 body[data-view="home"]::after{content:none;animation:none;will-change:auto}
 
 #home.entry-screen{gap:clamp(19px,3.3svh,30px);padding-top:clamp(12px,3.2svh,28px)}
@@ -31,9 +31,10 @@ body[data-view="home"]::after{content:none;animation:none;will-change:auto}
 body:not([data-view="home"]) header{background:linear-gradient(180deg,#0e0b0a 0%,#1c0d0e 50%,#351416 100%);border-bottom:1px solid #987245;box-shadow:0 1px 0 #bc956741,0 7px 22px #0009;backdrop-filter:none}
 body:not([data-view="home"]) header .brand,body:not([data-view="home"]) header nav a{color:#f6d694;text-shadow:0 1px 4px #050001}
 
-#board .jersey,#board.single .uniform-group .jersey,#board.single.signature .uniform-group .jersey{border:1px solid transparent!important;border-radius:0!important;background:radial-gradient(ellipse 90% 65% at 50% 0%,#c7b28c19,transparent 92%) padding-box,var(--portrait-light) padding-box,var(--portrait-rim) border-box!important;box-shadow:0 8px 16px #0005!important;backdrop-filter:none;-webkit-backdrop-filter:none}
+#board .jersey,#board.single .uniform-group .jersey,#board.single.signature .uniform-group .jersey{border:1px solid transparent!important;border-radius:0!important;background:radial-gradient(ellipse 90% 65% at 50% 0%,#c7b28c19,transparent 92%) padding-box,var(--portrait-light) padding-box,var(--portrait-rim)!important;box-shadow:0 8px 16px #0005!important;backdrop-filter:none;-webkit-backdrop-filter:none}
 #board .jersey::before,#board.single .uniform-group .jersey::before{content:''!important;display:block!important;position:absolute;inset:3px;padding:1px;background:var(--portrait-inner);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;pointer-events:none;z-index:1}
 #board .jersey:hover{border-color:transparent!important;box-shadow:0 9px 20px #0007!important}
+@media(max-width:800px){#board .jersey::before,#board.single .uniform-group .jersey::before{display:none!important}}
 
 /* The same overhead light for every jersey detail. */
 .player-visual{--beam-x:50%;border:1px solid transparent;border-radius:5px;background:var(--portrait-light) padding-box,var(--stage-rim) border-box;box-shadow:none}
@@ -49,11 +50,12 @@ body:not([data-view="home"]) header .brand,body:not([data-view="home"]) header n
 
 .stage-curtain[hidden]{display:none}
 .stage-curtain{position:fixed;inset:0;z-index:90;overflow:hidden;display:flex;pointer-events:auto}
-.stage-curtain__half{width:50%;height:100%;background:var(--stage-velvet);border-bottom:1px solid #b99152;box-shadow:inset 0 16px 35px #120102a8,0 12px 30px #0009;transform:translateY(-105%);will-change:transform}
+.stage-curtain__half{width:50%;height:100%;opacity:0;background:var(--stage-velvet);border-bottom:1px solid #b99152;box-shadow:inset 0 16px 35px #120102a8,0 12px 30px #0009;will-change:transform,opacity}
 .stage-curtain__half:first-child{border-right:1px solid #070001;transform-origin:left top}
 .stage-curtain__half:last-child{transform-origin:right top}
 
 @media(max-width:680px){
+ .stage-curtain__half{background:linear-gradient(180deg,#19040558,transparent 34%,transparent 75%,#19040591),repeating-linear-gradient(90deg,#361012 0%,#4e171a 3%,#6c2729 8%,#70272a 12%,#54191c 17%,#3a1114 20%,#361012 21%);box-shadow:inset 0 12px 22px #25070855,0 9px 22px #0006}
  #home.entry-screen{gap:20px;padding-top:clamp(16px,4.1svh,30px)}
  #home-title{font-size:clamp(54px,13.9vw,84px)}
  #home-title .home-sport::before{margin-bottom:10px}

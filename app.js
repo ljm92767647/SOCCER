@@ -20,7 +20,7 @@ const screens=['home','clubs','uniforms','abilities','notes'];
 function routeCollection(){const hash=decodeURIComponent(location.hash.slice(1));let view=['clubs','uniforms','abilities'].includes(hash)?hash:hash.startsWith('line-')||hash==='notes'?'uniforms':'home';document.body.dataset.view=view;for(const id of screens)document.getElementById(id).hidden=!(id===view||(view==='uniforms'&&id==='notes'));document.querySelectorAll('header nav a').forEach(a=>{if(a.hash==='#'+view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(view==='uniforms')arrange();window.scrollTo({top:0,behavior:'instant'});if(hash.startsWith('line-')){const entry=document.getElementById(hash);if(entry){document.getElementById('notes-archive').open=true;entry.open=true;entry.scrollIntoView({block:'start'})}}}
 window.addEventListener('hashchange',routeCollection);routeCollection();
 
-// Close the curtain over the old screen, swap sections, then draw it open.
+// Fade in the closed curtain, swap sections, then draw it slowly to the sides.
 const curtain = document.querySelector('.stage-curtain');
 const curtainHalves = [...(curtain?.children || [])];
 const reducedStageMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -45,9 +45,9 @@ document.querySelector('.entry-grid')?.addEventListener('click', async event => 
     routeCollection();
   }
   try {
-    await animatePanels(() => [{ transform:'translateY(-105%)' }, { transform:'translateY(0)' }], { duration:490, easing:'cubic-bezier(.28,.72,.34,1)' });
+    await animatePanels(() => [{ opacity:0 }, { opacity:1 }], { duration:820, easing:'ease-in-out' });
     openCollection();
-    await animatePanels(i => [{ transform:'translate(0,0)' }, { transform:`translate(${i === 0 ? -104 : 104}%,-9%) scaleX(.86)` }], { duration:850, easing:'cubic-bezier(.65,.04,.24,1)' });
+    await animatePanels(i => [{ transform:'translateX(0)' }, { transform:`translateX(${i === 0 ? -104 : 104}%) scaleX(.9)` }], { duration:1620, easing:'cubic-bezier(.52,.07,.34,1)' });
   } catch {
     openCollection();
   } finally {
