@@ -15,11 +15,11 @@ body{background:#050505}
 body::before{inset:0;background:radial-gradient(ellipse 49% 12% at 50% 78%,#aa845036 0%,#7359321b 54%,transparent 100%),radial-gradient(ellipse 62% 58% at 50% 43%,#77613a4f 0%,#52432c3d 39%,#251f1730 68%,transparent 100%),#0a0908}
 body[data-view="home"]::after{content:none;animation:none;will-change:auto}
 
-#home.entry-screen{gap:clamp(19px,3.3svh,30px);padding-top:clamp(12px,3.2svh,28px)}
+#home.entry-screen{gap:clamp(31px,5svh,44px);padding-top:clamp(12px,3.2svh,28px)}
 #home-title{font-family:'Pinyon Script','Snell Roundhand','Times New Roman',serif;font-size:clamp(62px,8.6vw,119px);letter-spacing:0;line-height:1.04;color:#f3d28e;text-shadow:0 1px 2px #755526,0 3px 28px #e7b4543a}
 #home-title .home-sport{font-family:var(--display-font);font-size:clamp(12px,1.4vw,18px);letter-spacing:.55em;line-height:1.25;text-indent:.55em;margin:11px auto 0;text-shadow:none}
 #home-title .home-sport::before{content:'';display:block;width:min(430px,72vw);height:1px;margin:0 auto 12px;background:linear-gradient(90deg,transparent,#b08b4d8f 20%,#e2bd7a 50%,#b08b4d8f 80%,transparent)}
-.entry-grid{width:min(830px,100%);gap:clamp(22px,3.5svh,32px)}
+.entry-grid{width:min(830px,100%);gap:clamp(28px,4.3svh,38px)}
 .entry-card{min-height:clamp(87px,14.8svh,128px);border-radius:5px}
 .entry-card-title{letter-spacing:.045em;font-size:clamp(23px,2.85vw,37px);color:#f2d292}
 .entry-glass{border:1px solid transparent;background:radial-gradient(ellipse 88% 124% at 50% -56%,#5e4a31bc,transparent 75%) padding-box,linear-gradient(157deg,#201b15dd,#0b0a08f0) padding-box,var(--stage-rim) border-box;box-shadow:0 10px 30px #0008,inset 0 0 24px #0007}
@@ -58,7 +58,7 @@ body[data-view="home"].stage-clearing header,body[data-view="home"].stage-cleari
 
 @media(max-width:680px){
  .stage-curtain__half{background:linear-gradient(180deg,#19040558,transparent 34%,transparent 75%,#19040591),repeating-linear-gradient(90deg,#090102 0%,#130305 1.2%,#3e1115 2.86%,#6c2729 7.62%,#70272a 11.43%,#54191c 16.19%,#24080c 18.33%,#090102 20%);box-shadow:inset 0 12px 22px #25070855,0 9px 22px #0006}
- #home.entry-screen{gap:20px;padding-top:clamp(16px,4.1svh,30px)}
+ #home.entry-screen{gap:32px;padding-top:clamp(16px,4.1svh,30px)}
  #home-title{font-size:clamp(54px,13.9vw,84px)}
  #home-title .home-sport::before{margin-bottom:10px}
  .entry-card{min-height:clamp(88px,15svh,119px);border-radius:5px}
